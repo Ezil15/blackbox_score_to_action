@@ -10,7 +10,6 @@ def reject_outliers(data, m = 2.):
     s = d/mdev if mdev else 0.
     return data[s<m]
 
-
 class ML_ActionGiver:
     '''Класс реализующий алгоритм поиска необходимого действия по переданному score.
     В класс передается датасет, на котором алгоритм обучается выдавать предполагаемое значение на основе алгоритма Random Forest'''
@@ -50,6 +49,7 @@ class ML_ActionGiver:
 
         #Запускаем обучение
         self.clf.fit(X_train, y_train)
+
     def get_action(self,score: float) -> float:
         '''Функция возвращающее предполагаемое действие исходя из переданного score'''
         return self.clf.predict([[score]])[0]
