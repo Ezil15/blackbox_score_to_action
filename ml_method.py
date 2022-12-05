@@ -10,7 +10,7 @@ def reject_outliers(data, m = 2.):
     s = d/mdev if mdev else 0.
     return data[s<m]
 
-class ML_ActionGiver:
+class MLActionGiver:
     '''Класс реализующий алгоритм поиска необходимого действия по переданному score.
     В класс передается датасет, на котором алгоритм обучается выдавать предполагаемое значение на основе алгоритма Random Forest'''
     def __init__(self, data) -> None:

@@ -8,7 +8,7 @@ def reject_outliers(data, m = 2.):
     s = d/mdev if mdev else 0.
     return data[s<m]
 
-class Average_ActionGiver:
+class AverageActionGiver:
     '''Класс реализующий алгоритм поиска необходимого действия по переданному score.
     Принцип поиска необходимых параметров для каждого действия - Поиск среднего значения из переданного датасета'''
     def __init__(self,data) -> None:
