@@ -14,6 +14,7 @@ class Average_ActionGiver:
     def __init__(self,data) -> None:
         self.actions_average = {}
         self.data = data
+
         #Сбор всех возможных действий Actions из переданного датасета data
         actions = np.unique(np.array(data)[:, 2]).astype(str)
 
@@ -24,6 +25,7 @@ class Average_ActionGiver:
         
         #Сортировка всех действий action и их средних значений параметров в порядке "по убыванию"
         self.actions_average = {k: v for k, v in sorted(self.actions_average.items(), key=lambda item: item[1], reverse=True)}
+        
     def get_average_for_action(self, action: str) -> float:
         '''Функция поиска среднего значения из переданной таблицы данных для определенного действия action'''
         a = np.asarray(self.data)
@@ -34,8 +36,6 @@ class Average_ActionGiver:
         #Избавляемся от аномалий
         all_with_action = reject_outliers(all_with_action,2)
         all_with_action = reject_outliers(all_with_action,1) #По правде... не то чтобы повторное взятие медианы было нужно, но она дает большую эффективность
-        
-        
 
         #Подсчет среднего
         av = sum(all_with_action)/len(all_with_action)
